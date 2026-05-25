@@ -644,7 +644,12 @@
     </div>
   </footer>
 
-  <script type="module" src="./script.js"></script>
+  <script type="module">
+    import { scroll, animate } from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
+    window.MotionScroll = scroll;
+    window.MotionAnimate = animate;
+  </script>
+  <script src="./script.js" defer></script>
 </body>
 
 </html>

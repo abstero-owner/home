@@ -1,14 +1,12 @@
-import {
-	scroll,
-	animate,
-} from "https://cdn.jsdelivr.net/npm/motion@11.11.13/+esm";
-
 /* =========================================================
    ABSTERO — script.js
    vanilla JS, no dependencies
    ========================================================= */
 (function () {
 	"use strict";
+
+	const scroll = window.MotionScroll;
+	const animate = window.MotionAnimate;
 
 	const reduceMotion = window.matchMedia(
 		"(prefers-reduced-motion: reduce)",
