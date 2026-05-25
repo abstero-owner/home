@@ -30,10 +30,7 @@
     <div class="nav__inner container">
       <a href="#" class="brand" aria-label="Abstero home">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 20 L12 4 L20 20 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-            <path d="M8.5 14 H15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-          </svg>
+          <img src="./assets/images/brand/logo.svg" alt="Abstero Logo" />
         </span>
         <span class="brand__name">Abstero</span>
       </a>
@@ -359,194 +356,7 @@
       </div>
     </section>
 
-    <!-- ============= COMPARISON TABLE ============= -->
-    <!-- <section class="section section--alt" id="compare">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <span class="eyebrow">Why Abstero</span>
-          <h2 class="section__title">The cost of <em>not</em> automating is louder than the cost of automating.</h2>
-          <p class="section__lede">Three honest ways to absorb the same operational work. We've costed all three at
-            market rates for a 12-person team.</p>
-        </div>
-
-        <div class="compare" data-reveal>
-          <div class="compare__head">
-            <span></span>
-            <span>Hire &amp; train</span>
-            <span>Generic SaaS</span>
-            <span class="is-us">Abstero</span>
-          </div>
-
-          <div class="compare__group">
-            <span class="compare__group-label">Economics</span>
-          </div>
-          <div class="compare__row">
-            <span>Upfront cost</span>
-            <span>$8k recruit + onboarding</span>
-            <span>$0</span>
-            <span class="is-us">$2,400 - $11,000 fixed</span>
-          </div>
-          <div class="compare__row">
-            <span>Monthly cost</span>
-            <span>$3,500 - $6,200 / FTE</span>
-            <span>$49 - $499 / seat, forever</span>
-            <span class="is-us">$0 (you own the flow)</span>
-          </div>
-          <div class="compare__row">
-            <span>Time to first value</span>
-            <span>6 - 12 weeks</span>
-            <span>1 - 4 weeks (after fit)</span>
-            <span class="is-us">7 - 21 days</span>
-          </div>
-
-          <div class="compare__group">
-            <span class="compare__group-label">Control</span>
-          </div>
-          <div class="compare__row">
-            <span>Adapts to your data</span>
-            <span>Yes, slowly</span>
-            <span>Within product limits</span>
-            <span class="is-us">Forked &amp; tailored line-by-line</span>
-          </div>
-          <div class="compare__row">
-            <span>Source code</span>
-            <span>n/a</span>
-            <span>Vendor-owned</span>
-            <span class="is-us">Yours, on day one</span>
-          </div>
-          <div class="compare__row">
-            <span>Runs where</span>
-            <span>In your team's heads</span>
-            <span>Vendor cloud</span>
-            <span class="is-us">Your tenant or ours - your call</span>
-          </div>
-
-          <div class="compare__group">
-            <span class="compare__group-label">Risk</span>
-          </div>
-          <div class="compare__row">
-            <span>Burnout / turnover</span>
-            <span>High</span>
-            <span>n/a</span>
-            <span class="is-us">n/a</span>
-          </div>
-          <div class="compare__row">
-            <span>Vendor lock-in</span>
-            <span>n/a</span>
-            <span>Severe</span>
-            <span class="is-us">None - flow is portable n8n / code</span>
-          </div>
-          <div class="compare__row">
-            <span>When you outgrow it</span>
-            <span>Re-hire, re-train</span>
-            <span>Migrate, re-buy</span>
-            <span class="is-us">Edit the flow yourself</span>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-
-
-    <!-- ============= FLOW LIBRARY ============= -->
-    <!-- <section class="section" id="flows">
-      <div class="container">
-        <div class="flows" data-reveal-stagger>
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/01</span>
-              <span class="flow-card__tag">Finance</span>
-            </header>
-            <h3>Invoice OCR → ledger</h3>
-            <p>Inbound supplier invoices are parsed, matched to POs, GL-coded, and pushed into Xero or QuickBooks.
-              Anything ambiguous lands in a Slack approval thread, not a forgotten inbox.</p>
-            <ul class="flow-card__bullets">
-              <li>OCR + LLM line-item parsing</li>
-              <li>Duplicate &amp; fraud heuristics</li>
-              <li>Audit log per invoice</li>
-            </ul>
-          </article>
-
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/02</span>
-              <span class="flow-card__tag">Revenue</span>
-            </header>
-            <h3>Lead enrich &amp; route</h3>
-            <p>New form fill → company enriched, ICP-scored, routed to the right AE in Slack within 90 seconds, with a
-              draft first-touch already in their inbox. We do nothing the SDR couldn't, just at 04:00 on a Sunday.</p>
-            <ul class="flow-card__bullets">
-              <li>Clearbit / Apollo enrichment</li>
-              <li>Custom ICP scoring per persona</li>
-              <li>Drafts respect your real tone</li>
-            </ul>
-          </article>
-
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/03</span>
-              <span class="flow-card__tag">Support</span>
-            </header>
-            <h3>Triage &amp; first-response</h3>
-            <p>Incoming tickets are tagged, prioritised against your SLA, and answered with a draft built from your real
-              help docs. Your agents accept or edit — they no longer write from a blank page.</p>
-            <ul class="flow-card__bullets">
-              <li>Multilingual out of the box</li>
-              <li>Hallucination guardrails on every reply</li>
-              <li>Plugs into Intercom, Zendesk, Front</li>
-            </ul>
-          </article>
-
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/04</span>
-              <span class="flow-card__tag">Operations</span>
-            </header>
-            <h3>Daily AR collections</h3>
-            <p>Overdue invoices are chased on a humane cadence with messages that sound like a human wrote them,
-              escalations that respect the relationship, and a dashboard that finally tells you who actually pays.</p>
-            <ul class="flow-card__bullets">
-              <li>Tone-tuned reminder ladder</li>
-              <li>Auto-pause when payment is received</li>
-              <li>CSV-ready exec digest weekly</li>
-            </ul>
-          </article>
-
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/05</span>
-              <span class="flow-card__tag">People</span>
-            </header>
-            <h3>Hiring pipeline assistant</h3>
-            <p>CVs are summarised against the JD, candidates are nudged at the right cadence, and the recruiter walks
-              into every call already briefed. We don't filter humans out — we make sure none get forgotten.</p>
-            <ul class="flow-card__bullets">
-              <li>Bias-aware summarisation</li>
-              <li>Calendar &amp; reminder orchestration</li>
-              <li>Bidirectional sync with Greenhouse / Ashby</li>
-            </ul>
-          </article>
-
-          <article class="flow-card">
-            <header class="flow-card__head">
-              <span class="flow-card__num">/06</span>
-              <span class="flow-card__tag">Knowledge</span>
-            </header>
-            <h3>Internal answers desk</h3>
-            <p>A private chat surface trained on your Notion, Drive and Confluence. New hires ramp 2× faster. Senior
-              folk stop being the office search engine.</p>
-            <ul class="flow-card__bullets">
-              <li>Citations to source on every answer</li>
-              <li>Permissions inherit from source</li>
-              <li>Slack &amp; Teams native</li>
-            </ul>
-          </article>
-        </div>
-
-
-      </div>
-    </section> -->
-
+  
     <!-- ============= HOW WE WORK TOGETHER ============= -->
     <section class="section section--alt" id="process">
       <div class="container">
@@ -601,8 +411,16 @@
       <div class="container">
         <div class="section__head" data-reveal>
           <span class="eyebrow">Pricing</span>
-          <h2 class="section__title">Simple, transparent pricing. <span class="hl">No hidden fees.</span></h2>
-          <p class="section__lede">Choose a pre-built flow from our library or let us build a custom automation tailored to your exact needs.</p>
+          <h2 class="section__title"><span class="hl">No upfront cost.</span> Pay monthly, or save with annual.</h2>
+          <p class="section__lede">A template flow or a custom build for your business. You only start paying when it's live and doing the work.</p>
+        </div>
+
+        <div class="pricing__toggle" data-reveal>
+          <span class="pricing__toggle-label is-active" id="label-monthly" onclick="document.getElementById('pricing-switch').click()">Monthly</span>
+          <button class="pricing__switch" id="pricing-switch" role="switch" aria-checked="false" aria-label="Toggle yearly pricing">
+            <span class="pricing__switch-knob"></span>
+          </button>
+          <span class="pricing__toggle-label" id="label-yearly" onclick="document.getElementById('pricing-switch').click()">Yearly <span class="pricing__badge-save">2 months free</span></span>
         </div>
 
         <div class="pricing" data-reveal-stagger>
@@ -610,8 +428,8 @@
             <header class="pricing__header">
               <span class="pricing__tier">Template Flow</span>
               <div class="pricing__price">
-                <span class="pricing__amount">$150–$400</span>
-                <span class="pricing__period">/ month</span>
+                <span class="pricing__amount" id="price-template" data-monthly="$150–$400" data-yearly="$1,500–$4,000">$150–$400</span>
+                <span class="pricing__period" id="period-template" data-monthly="/ month" data-yearly="/ year">/ month</span>
               </div>
             </header>
             <p class="pricing__desc">A pre-built flow from our library, adapted to your stack and your data. Quick deployment for the use cases most online businesses run into.</p>
@@ -657,135 +475,66 @@
       </div>
     </section>
 
-    <!-- ============= ROI CALCULATOR ============= -->
-    <section class="section section--alt" id="savings">
-      <div class="container">
-        <div class="section__head" data-reveal>
-          <span class="eyebrow">The math</span>
-          <h2 class="section__title">A flow that costs $6,000 once usually saves more than that in its first month.</h2>
-          <p class="section__lede">Move the sliders. The numbers are conservative — based on 30+ deployments at $42 / hr
-            blended ops cost.</p>
-        </div>
 
-        <div class="calc" data-reveal>
-          <div class="calc__controls">
-            <div class="calc__row">
-              <label for="hours">Hours / week of repetitive ops work</label>
-              <div class="calc__slider">
-                <input type="range" id="hours" min="2" max="80" value="22" />
-                <output id="hoursOut">22 h</output>
-              </div>
-            </div>
-            <div class="calc__row">
-              <label for="rate">Blended hourly cost ($)</label>
-              <div class="calc__slider">
-                <input type="range" id="rate" min="18" max="120" value="42" />
-                <output id="rateOut">$42</output>
-              </div>
-            </div>
-            <div class="calc__row">
-              <label for="cover">Share of that work a flow can absorb</label>
-              <div class="calc__slider">
-                <input type="range" id="cover" min="20" max="95" value="70" />
-                <output id="coverOut">70%</output>
-              </div>
-            </div>
-          </div>
-
-          <aside class="calc__out">
-            <div>
-              <span class="calc__out-k">Monthly saving</span>
-              <strong class="calc__out-v" id="monthly">$2,830</strong>
-            </div>
-            <div class="calc__divider"></div>
-            <div>
-              <span class="calc__out-k">Annual saving</span>
-              <strong class="calc__out-v" id="yearly">$33,960</strong>
-            </div>
-            <div class="calc__divider"></div>
-            <div>
-              <span class="calc__out-k">Payback on a $6,000 build</span>
-              <strong class="calc__out-v" id="payback">~2.1 mo</strong>
-            </div>
-            <a href="#contact" class="btn btn--solid btn--lg magnetic calc__cta">
-              Lock these numbers in
-              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </svg>
-            </a>
-          </aside>
-        </div>
-      </div>
-    </section>
 
     <!-- ============= FAQ ============= -->
     <section class="section" id="faq">
       <div class="container">
         <div class="section__head" data-reveal>
-          <span class="eyebrow">Reasonable doubts</span>
-          <h2 class="section__title">Honest answers to the questions <br />buyers always ask second.</h2>
+          <h2 class="section__title">F.A.Q</h2>
+          <p class="section__lede">If something isn't covered here, ask us directly on the intro call — we'd rather over-explain than have you wonder.</p>
+          
         </div>
 
         <div class="faq" data-reveal-stagger>
           <details class="faq__item" open>
             <summary>
-              <span>Are we just paying for a template?</span>
+              <span>Do I really not pay anything until the flow is live?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>No. The library is the starting point - the saving is in the weeks we don't have to spend on plumbing.
-              Every deploy is forked into your private workspace, rewired around your data, and tested against your real
-              edge cases. The deliverable is a flow that runs only for you.</p>
+            <p>Correct. No setup fee and no deposit. If we plan, build, and test a flow but it never reaches live status, you owe us nothing. We take that risk on purpose — it forces us to only take on projects we know we can deliver.</p>
           </details>
 
           <details class="faq__item">
             <summary>
-              <span>What happens if Abstero disappears tomorrow?</span>
+              <span>We don't have a developer or IT team. Is that a problem?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>The flow keeps running. You own the source, the prompts, the credentials, and (if you chose self-hosted)
-              the runtime. n8n is open-source; the scripts are plain Python or TypeScript. Any competent engineer can
-              pick it up - that's the contract.</p>
+            <p>Not at all — that's exactly who we're built for. We handle every technical part: hosting, integrations, AI setup, monitoring, fixes. Your involvement is limited to telling us what needs automating and approving the plan. No setup, no configuration, no technical work on your side.</p>
           </details>
 
           <details class="faq__item">
             <summary>
-              <span>Does the AI hallucinate on customer-facing work?</span>
+              <span>Can we cancel anytime?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Every customer-facing flow ships with guardrails: source citations, allow-lists, schema validation, and a
-              human approval step where the cost of being wrong is real. We will tell you in the audit which jobs are
-              safe to automate fully and which should stay draft-only.</p>
+            <p>Monthly plans — yes, cancel any time with no fees. Annual plans are paid upfront with a two-month discount, so they run for the full year. After the year ends, you can either renew, switch to monthly, or stop</p>
           </details>
 
           <details class="faq__item">
             <summary>
-              <span>How much engineering capacity do we need on our side?</span>
+              <span>Who owns the data the flow processes?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>For a typical deploy: one operator who knows the process, two or three half-hour calls, and a single
-              afternoon to review documentation. No engineer needed unless you want the flow self-hosted, in which case
-              our team works directly with yours.</p>
+            <p>You do. Always. Customer data, order data, anything the flow touches belongs to your business and stays in your systems (your CRM, your database, your tools). We don't store your data on our side beyond what's needed for the flow to run, and we don't use it for anything else.</p>
+          </details>
+
+          
+
+          <details class="faq__item">
+            <summary>
+              <span>How long does a flow take to go live?</span>
+              <span class="faq__plus" aria-hidden="true"></span>
+            </summary>
+            <p>Template flows: Up to 7 days from kickoff. Custom builds: usually 3-6 weeks depending on complexity and how many systems we're integrating. Discovery and planning happen in the first week regardless — you'll know the timeline before approving anything.</p>
           </details>
 
           <details class="faq__item">
             <summary>
-              <span>What about data privacy and SOC 2 / GDPR?</span>
+              <span>What happens if the flow breaks or makes a mistake?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Self-hosted flows never let your data leave your tenant. Managed flows run in EU regions by default with
-              DPA, sub-processor list and SOC 2-aligned controls. We don't train on your data, and we delete artefacts
-              on request - in writing.</p>
-          </details>
-
-          <details class="faq__item">
-            <summary>
-              <span>What's the price?</span>
-              <span class="faq__plus" aria-hidden="true"></span>
-            </summary>
-            <p>Fixed-fee per flow: typically $2,400 - $11,000 depending on the number of integrations and the depth of
-              customisation. The audit call is free and you leave it with a written number. No retainer, no per-seat
-              pricing, no scope creep invoices.</p>
+            <p>Every flow goes through extensive testing before it goes live — real data, edge cases, unusual inputs, failure scenarios. After launch, we monitor every flow 24/7 and usually fix issues before you notice them.</p>
           </details>
         </div>
       </div>

@@ -1618,6 +1618,71 @@ footer {
 /* =========================================================
    PRICING
    ========================================================= */
+.pricing__toggle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.pricing__toggle-label {
+	font-size: 15px;
+	font-weight: 500;
+	color: var(--fg-3);
+	cursor: pointer;
+	transition: color 0.3s var(--ease);
+}
+
+.pricing__toggle-label.is-active {
+	color: var(--fg);
+}
+
+.pricing__switch {
+	appearance: none;
+	width: 52px;
+	height: 30px;
+	border-radius: 30px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid var(--line);
+	cursor: pointer;
+	position: relative;
+	padding: 3px;
+	transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.pricing__switch:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: var(--line-strong);
+}
+
+.pricing__switch-knob {
+	display: block;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	background: var(--accent);
+	transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.pricing__switch[aria-checked="true"] .pricing__switch-knob {
+	transform: translateX(22px);
+}
+
+.pricing__badge-save {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 3px 8px;
+	font-size: 10px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--accent-ink);
+	background: var(--accent);
+	border-radius: var(--r-pill);
+	vertical-align: middle;
+}
+
 .pricing {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

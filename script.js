@@ -272,4 +272,36 @@ import {
 			}
 		});
 	}
+	
+	// ---------- 13. Pricing Toggle ----------
+	const pricingSwitch = document.getElementById("pricing-switch");
+	if (pricingSwitch) {
+		const labelMonthly = document.getElementById("label-monthly");
+		const labelYearly = document.getElementById("label-yearly");
+		const priceTemplate = document.getElementById("price-template");
+		const periodTemplate = document.getElementById("period-template");
+
+		pricingSwitch.addEventListener("click", () => {
+			const isYearly = pricingSwitch.getAttribute("aria-checked") === "true";
+			
+			// Toggle state
+			const newState = !isYearly;
+			pricingSwitch.setAttribute("aria-checked", String(newState));
+			
+			// Update labels
+			if (newState) {
+				labelMonthly.classList.remove("is-active");
+				labelYearly.classList.add("is-active");
+			} else {
+				labelYearly.classList.remove("is-active");
+				labelMonthly.classList.add("is-active");
+			}
+			
+			// Update text
+			if (priceTemplate && periodTemplate) {
+				priceTemplate.textContent = priceTemplate.getAttribute(newState ? "data-yearly" : "data-monthly");
+				periodTemplate.textContent = periodTemplate.getAttribute(newState ? "data-yearly" : "data-monthly");
+			}
+		});
+	}
 })();
