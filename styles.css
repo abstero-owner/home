@@ -1522,7 +1522,7 @@ footer {
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-	gap: 60vh;
+	gap: 30vh;
 	padding-bottom: 10vh; /* Small padding at the end */
 }
 
@@ -1648,7 +1648,9 @@ footer {
 	cursor: pointer;
 	position: relative;
 	padding: 3px;
-	transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
+	transition:
+		background 0.3s var(--ease),
+		border-color 0.3s var(--ease);
 }
 
 .pricing__switch:hover {
@@ -1662,7 +1664,7 @@ footer {
 	height: 22px;
 	border-radius: 50%;
 	background: var(--accent);
-	transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pricing__switch[aria-checked="true"] .pricing__switch-knob {
@@ -2274,6 +2276,13 @@ input[type="range"]::-moz-range-thumb {
 	margin: 0;
 }
 
+.contact__fine a {
+	text-decoration: underline;
+}
+
+.contact__fine a:hover {
+	text-decoration: none;
+}
 /* =========================================================
    FOOTER
    ========================================================= */
