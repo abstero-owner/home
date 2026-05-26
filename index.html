@@ -3,18 +3,22 @@
 
 <head>
   <meta charset="utf-8" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5612c1b5-431a-48da-b9c1-1dc9b4ed2bbb"></script>
   <script>document.documentElement.classList.remove('no-js'); document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#0a0a0a" />
-  <title>Abstero - AI Automation That Replaces Operational Overhead</title>
+  <title>Abstero | AI Workflow Automation for Online Businesses</title>
+
   <meta name="description"
-    content="Abstero deploys production-grade AI automations - n8n flows, scripts, APIs - that quietly absorb the operational work your team should not be doing." />
+    content="Pre-built and custom AI workflows that handle customer support, data reporting, and sales operations. No setup fees." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=JetBrains+Mono:wght@300;400;500&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" type="image/svg+xml" href="./assets/images/brand/logo.svg" />
+  <link rel="alternate icon" type="image/png" href="./assets/images/brand/logo-32x32.png" />
 </head>
 
 <body>
@@ -39,13 +43,11 @@
         <a href="#how">What we automate</a>
         <a href="#process">How it works</a>
         <a href="#pricing">Pricing</a>
-        <a href="#savings">ROI</a>
         <a href="#faq">FAQ</a>
       </nav>
 
       <div class="nav__cta">
-        <a href="#contact" class="btn btn--ghost btn--sm">Talk to us</a>
-        <a href="#contact" class="btn btn--solid btn--sm">Request a Demo
+        <a href="#contact" class="btn btn--solid btn--sm" data-umami-event="nav_cta_request_demo">Request a Demo
           <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round" />
@@ -65,9 +67,8 @@
       <a href="#how">What we automate</a>
       <a href="#process">How it works</a>
       <a href="#pricing">Pricing</a>
-      <a href="#savings">ROI</a>
       <a href="#faq">FAQ</a>
-      <a href="#contact" class="btn btn--solid">Request a Demo</a>
+      <a href="#contact" class="btn btn--solid" data-umami-event="nav_cta_request_demo">Request a Demo</a>
     </div>
   </div>
 
@@ -107,10 +108,10 @@
         </p>
 
         <div class="hero__cta" data-reveal>
-          <a href="#contact" class="btn btn--solid btn--lg magnetic">
+          <a href="#contact" class="btn btn--solid btn--lg magnetic" data-umami-event="hero_cta_contact_us">
             Contact Us
           </a>
-          <a href="#flows" class="btn btn--ghost btn--lg magnetic">
+          <a href="#flows" class="btn btn--ghost btn--lg magnetic" data-umami-event="hero_cta_see_examples">
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M2 4h12M2 8h12M2 12h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
             </svg>
@@ -271,17 +272,19 @@
               </a>
             </li>
             <li>
-              <a href="https://www.atlassian.com/software/jira" target="_blank" rel="noopener">
-                <img src="./assets/images/integrations/jira.svg" alt="Jira" />
-                <span>Jira</span>
-              </a>
-            </li>
-            <li>
               <a href="https://www.google.com/gmail/" target="_blank" rel="noopener">
                 <img src="./assets/images/integrations/google-gmail.svg" alt="Google Gmail" />
                 <span>Gmail</span>
               </a>
             </li>
+            <li>
+              <a href="https://mailchimp.com/" target="_blank" rel="noopener">
+                <img src="./assets/images/integrations/mailchimp-freddie.svg" alt="Mailchimp" />
+                <span>Mailchimp</span>
+              </a>
+            </li>
+
+
             <li>
               <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">
                 <img src="./assets/images/integrations/google-sheets.svg" alt="Google Sheets" />
@@ -289,12 +292,11 @@
               </a>
             </li>
             <li>
-              <a href="https://www.paypal.com/" target="_blank" rel="noopener">
-                <img src="./assets/images/integrations/paypal.svg" alt="Paypal" />
-                <span>Paypal</span>
+              <a href="https://airtable.com/" target="_blank" rel="noopener">
+                <img src="./assets/images/integrations/airtable.svg" alt="Airtable" />
+                <span>Airtable</span>
               </a>
             </li>
-
           </ul>
         </div>
 
@@ -337,7 +339,8 @@
             <h3>Sales Operations</h3>
             <p>Sending cold emails takes half your week? We build the full pipeline — AI writes personalized openers
               based on the prospect's company, recent news, or LinkedIn activity, sends them on schedule, and auto-tags
-              replies in your CRM as interested, not now, wrong person, or unsubscribe.</p>
+              replies in your CRM as interested, not now, wrong person, or unsubscribe. You only see the ones worth a
+              real conversation.</p>
           </li>
         </ol>
 
@@ -345,7 +348,8 @@
           <p class="flows__cta-text">
             Don't see your use case? <strong>We've probably built something close</strong>
           </p>
-          <a href="#contact" class="btn btn--solid btn--lg pricing__cta magnetic" style="max-width: 14rem;">
+          <a href="#contact" class="btn btn--solid btn--lg pricing__cta magnetic" style="max-width: 14rem;"
+            data-umami-event="flows_cta_talk_to_us">
             Talk to us
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -356,51 +360,61 @@
       </div>
     </section>
 
-  
+
     <!-- ============= HOW WE WORK TOGETHER ============= -->
     <section class="section section--alt" id="process">
       <div class="container">
         <div class="section__head" data-reveal>
           <span class="eyebrow">How we work together</span>
-          <h2 class="section__title">You don't need a tech team. <br/> You don't pay a cent until it works.</span>
+          <h2 class="section__title">You don't need a tech team. <br /> You don't pay a cent until it works.</span>
           </h2>
-          <p class="section__lede">We handle every technical part of the process. You decide what to fix and approve the plan — we do everything else.</p>
+          <p class="section__lede">We handle every technical part of the process. You decide what to fix and approve the
+            plan — we do everything else.</p>
         </div>
 
         <div class="process" id="processCards">
           <article class="process__card process__card--1">
             <span class="process__num">01</span>
             <h3>Intro Call</h3>
-            <p>We start with a 30-minute call where you tell us what's eating your team's time. We ask questions, answer yours, and if your problem matches a flow we've already built — we'll show you a live demo right there.</p>
-           
+            <p>We start with a 30-minute call where you tell us what's eating your team's time. We ask questions, answer
+              yours, and if your problem matches a flow we've already built — we'll show you a live demo right there.
+            </p>
+
           </article>
 
           <article class="process__card process__card--2">
             <span class="process__num">02</span>
             <h3>Discovery &amp; Plan</h3>
-            <p>We look into the tools you already use, study how the broken process currently works, and put together a concrete plan: what we'll build, how it will connect to your stack, what it will do. You review it and approve it before we move forward.</p>
-           
+            <p>We look into the tools you already use, study how the broken process currently works, and put together a
+              concrete plan: what we'll build, how it will connect to your stack, what it will do. You review it and
+              approve it before we move forward.</p>
+
           </article>
 
           <article class="process__card process__card--3">
             <span class="process__num">03</span>
             <h3>Build</h3>
-            <p>We build the flow according to the approved plan. You don't install anything, configure anything, or have a developer on your side. We work with the tools and accounts you already have.</p>
-            
+            <p>We build the flow according to the approved plan. You don't install anything, configure anything, or have
+              a developer on your side. We work with the tools and accounts you already have.</p>
+
           </article>
 
           <article class="process__card process__card--4">
             <span class="process__num">04</span>
             <h3>Deploy & Test</h3>
-            <p>We deploy the flow, run it on your real data, and hunt for the edge cases that always show up — unusual orders, weird inputs, formats nobody anticipated. Everything gets fixed before your team or customers touch it.</p>
-            
+            <p>We deploy the flow, run it on your real data, and hunt for the edge cases that always show up — unusual
+              orders, weird inputs, formats nobody anticipated. Everything gets fixed before your team or customers
+              touch it.</p>
+
           </article>
 
           <article class="process__card process__card--5">
             <span class="process__num">05</span>
             <h3>Go Live</h3>
-            <p>The flow goes live and starts doing the work. This is the first day you pay us anything — never for the call, never for the plan, never for the build, never for testing. No setup fees. No deposits. Just a monthly fee that starts when your flow handles its first real task.</p>
-            
+            <p>The flow goes live and starts doing the work. This is the first day you pay us anything — never for the
+              call, never for the plan, never for the build, never for testing. No setup fees. No deposits. Just a
+              monthly fee that starts when your flow handles its first real task.</p>
+
           </article>
         </div>
       </div>
@@ -412,15 +426,20 @@
         <div class="section__head" data-reveal>
           <span class="eyebrow">Pricing</span>
           <h2 class="section__title"><span class="hl">No upfront cost.</span> Pay monthly, or save with annual.</h2>
-          <p class="section__lede">A template flow or a custom build for your business. You only start paying when it's live and doing the work.</p>
+          <p class="section__lede">A template flow or a custom build for your business. You only start paying when it's
+            live and doing the work.</p>
         </div>
 
         <div class="pricing__toggle" data-reveal>
-          <span class="pricing__toggle-label is-active" id="label-monthly" onclick="document.getElementById('pricing-switch').click()">Monthly</span>
-          <button class="pricing__switch" id="pricing-switch" role="switch" aria-checked="false" aria-label="Toggle yearly pricing">
+          <span class="pricing__toggle-label is-active" id="label-monthly"
+            onclick="document.getElementById('pricing-switch').click()">Monthly</span>
+          <button class="pricing__switch" id="pricing-switch" role="switch" aria-checked="false"
+            aria-label="Toggle yearly pricing">
             <span class="pricing__switch-knob"></span>
           </button>
-          <span class="pricing__toggle-label" id="label-yearly" onclick="document.getElementById('pricing-switch').click()">Yearly <span class="pricing__badge-save">2 months free</span></span>
+          <span class="pricing__toggle-label" id="label-yearly"
+            onclick="document.getElementById('pricing-switch').click()">Yearly <span class="pricing__badge-save">2
+              months free</span></span>
         </div>
 
         <div class="pricing" data-reveal-stagger>
@@ -428,11 +447,14 @@
             <header class="pricing__header">
               <span class="pricing__tier">Template Flow</span>
               <div class="pricing__price">
-                <span class="pricing__amount" id="price-template" data-monthly="$150–$400" data-yearly="$1,500–$4,000">$150–$400</span>
-                <span class="pricing__period" id="period-template" data-monthly="/ month" data-yearly="/ year">/ month</span>
+                <span class="pricing__amount" id="price-template" data-monthly="$150–$400"
+                  data-yearly="$1,500–$4,000">$150–$400</span>
+                <span class="pricing__period" id="period-template" data-monthly="/ month" data-yearly="/ year">/
+                  month</span>
               </div>
             </header>
-            <p class="pricing__desc">A pre-built flow from our library, adapted to your stack and your data. Quick deployment for the use cases most online businesses run into.</p>
+            <p class="pricing__desc">A pre-built flow from our library, adapted to your stack and your data. Quick
+              deployment for the use cases most online businesses run into.</p>
             <ul class="pricing__features">
               <li>Pre-built automation flow from our library</li>
               <li>Standard integrations with your existing tools</li>
@@ -440,7 +462,8 @@
               <li>Hosted, monitored, and maintained by us</li>
               <li>Email support with 24-hour response</li>
             </ul>
-            <a href="#contact" class="btn btn--ghost btn--lg pricing__cta magnetic">Get started
+            <a href="#contact" class="btn btn--ghost btn--lg pricing__cta magnetic"
+              data-umami-event="pricing_cta_get_started">Get started
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                   stroke-linejoin="round" />
@@ -456,7 +479,8 @@
                 <span class="pricing__period">scoped on call</span>
               </div>
             </header>
-            <p class="pricing__desc">A tailored end-to-end automation built specifically for your unique business logic and edge cases.</p>
+            <p class="pricing__desc">A tailored end-to-end automation built specifically for your unique business logic
+              and edge cases.</p>
             <ul class="pricing__features">
               <li>Fully custom workflow built around your process</li>
               <li>Unlimited integrations with your stack</li>
@@ -464,7 +488,8 @@
               <li>Dedicated support & SLA</li>
               <li>Priority support with 4-hour response</li>
             </ul>
-            <a href="#contact" class="btn btn--solid btn--lg pricing__cta magnetic">Discuss terms
+            <a href="#contact" class="btn btn--solid btn--lg pricing__cta magnetic"
+              data-umami-event="pricing_cta_talk_to_sales">Talk to sales
               <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                   stroke-linejoin="round" />
@@ -482,8 +507,9 @@
       <div class="container">
         <div class="section__head" data-reveal>
           <h2 class="section__title">F.A.Q</h2>
-          <p class="section__lede">If something isn't covered here, ask us directly on the intro call — we'd rather over-explain than have you wonder.</p>
-          
+          <p class="section__lede">If something isn't covered here, ask us directly on the intro call — we'd rather
+            over-explain than have you wonder.</p>
+
         </div>
 
         <div class="faq" data-reveal-stagger>
@@ -492,7 +518,9 @@
               <span>Do I really not pay anything until the flow is live?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Correct. No setup fee and no deposit. If we plan, build, and test a flow but it never reaches live status, you owe us nothing. We take that risk on purpose — it forces us to only take on projects we know we can deliver.</p>
+            <p>Correct. No setup fee and no deposit. If we plan, build, and test a flow but it never reaches live
+              status, you owe us nothing. We take that risk on purpose — it forces us to only take on projects we know
+              we can deliver.</p>
           </details>
 
           <details class="faq__item">
@@ -500,7 +528,9 @@
               <span>We don't have a developer or IT team. Is that a problem?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Not at all — that's exactly who we're built for. We handle every technical part: hosting, integrations, AI setup, monitoring, fixes. Your involvement is limited to telling us what needs automating and approving the plan. No setup, no configuration, no technical work on your side.</p>
+            <p>Not at all — that's exactly who we're built for. We handle every technical part: hosting, integrations,
+              AI setup, monitoring, fixes. Your involvement is limited to telling us what needs automating and approving
+              the plan. No setup, no configuration, no technical work on your side.</p>
           </details>
 
           <details class="faq__item">
@@ -508,7 +538,9 @@
               <span>Can we cancel anytime?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Monthly plans — yes, cancel any time with no fees. Annual plans are paid upfront with a two-month discount, so they run for the full year. After the year ends, you can either renew, switch to monthly, or stop</p>
+            <p>Monthly plans — yes, cancel any time with no fees. Annual plans are paid upfront with a two-month
+              discount, so they run for the full year. After the year ends, you can either renew, switch to monthly, or
+              stop</p>
           </details>
 
           <details class="faq__item">
@@ -516,17 +548,21 @@
               <span>Who owns the data the flow processes?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>You do. Always. Customer data, order data, anything the flow touches belongs to your business and stays in your systems (your CRM, your database, your tools). We don't store your data on our side beyond what's needed for the flow to run, and we don't use it for anything else.</p>
+            <p>You do. Always. Customer data, order data, anything the flow touches belongs to your business and stays
+              in your systems (your CRM, your database, your tools). We don't store your data on our side beyond what's
+              needed for the flow to run, and we don't use it for anything else.</p>
           </details>
 
-          
+
 
           <details class="faq__item">
             <summary>
               <span>How long does a flow take to go live?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Template flows: Up to 7 days from kickoff. Custom builds: usually 3-6 weeks depending on complexity and how many systems we're integrating. Discovery and planning happen in the first week regardless — you'll know the timeline before approving anything.</p>
+            <p>Template flows: Up to 7 days from kickoff. Custom builds: usually 3-6 weeks depending on complexity and
+              how many systems we're integrating. Discovery and planning happen in the first week regardless — you'll
+              know the timeline before approving anything.</p>
           </details>
 
           <details class="faq__item">
@@ -534,7 +570,9 @@
               <span>What happens if the flow breaks or makes a mistake?</span>
               <span class="faq__plus" aria-hidden="true"></span>
             </summary>
-            <p>Every flow goes through extensive testing before it goes live — real data, edge cases, unusual inputs, failure scenarios. After launch, we monitor every flow 24/7 and usually fix issues before you notice them.</p>
+            <p>Every flow goes through extensive testing before it goes live — real data, edge cases, unusual inputs,
+              failure scenarios. After launch, we monitor every flow 24/7 and usually fix issues before you notice them.
+            </p>
           </details>
         </div>
       </div>
@@ -545,8 +583,10 @@
       <div class="container contact">
         <div class="contact__copy" data-reveal>
           <span class="eyebrow">Let's talk</span>
-          <h2 class="section__title">Spend <span class="hl">twenty</span> minutes with us now and save your team <span class="hl">hundreds</span> of hours a year.</h2>
-          <p class="section__lede">A short call to walk through your operational pain points. We'll tell you honestly which can be automated, how, and what it would cost — whether you work with us after or not.</p>
+          <h2 class="section__title">Spend <span class="hl">twenty</span> minutes now and save your team <span
+              class="hl">hundreds</span> of hours a year.</h2>
+          <p class="section__lede">A short call to walk through your operational pain points. We'll tell you honestly
+            which can be automated, how, and what it would cost — whether you work with us after or not.</p>
         </div>
 
         <form class="contact__form" data-reveal autocomplete="on" novalidate>
@@ -556,23 +596,35 @@
 
           <label class="field">
             <span>Your name</span>
-            <input type="text" name="name" required placeholder="Maria Lindgren" />
+            <input type="text" name="name" required placeholder="Alex Johnson" />
           </label>
 
           <label class="field">
             <span>Work email</span>
-            <input type="email" name="email" required placeholder="maria@company.com" />
+            <input type="email" name="email" required placeholder="email@company.com" />
+          </label>
+
+          <label class="field">
+            <span>What's eating your team's time? <small>(optional)</small></span>
+            <textarea name="message" rows="4"
+              placeholder="A few sentences about the repetitive work you'd like to automate."></textarea>
+          </label>
+
+          <label class="field" style="position:absolute; left:-9999px;" aria-hidden="true">
+            <span>Leave this blank</span>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
           </label>
 
           <button type="submit" class="btn btn--solid btn--lg magnetic contact__submit">
-            Submit 
+            Get in touch
             <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
           </button>
 
-          <p class="contact__fine">Or skip the form and email us directly at <a href="mailto:partner@abstero.com.">partner@abstero.com.</a></p>
+          <p class="contact__fine">Or skip the form and email us directly at <a
+              href="mailto:partner@abstero.com">partner@abstero.com</a></p>
         </form>
       </div>
     </section>
@@ -582,48 +634,48 @@
   <!-- ============= FOOTER ============= -->
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer__brand">
-        <a href="#" class="brand">
-          <span class="brand__mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 20 L12 4 L20 20 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
-              <path d="M8.5 14 H15.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-            </svg>
-          </span>
-          <span class="brand__name">Abstero</span>
-        </a>
-        <p>AI automations that quietly absorb the operational work your team should not be doing.</p>
-      </div>
+      <a href="#" class="footer__brand brand">
+        <img src="./assets/images/brand/logo.svg" alt="" width="32" height="32" />
+        <span class="brand__name">Abstero</span>
+      </a>
 
-      <nav class="footer__col" aria-label="Product">
-        <span class="footer__h">Product</span>
+      <nav class="footer__nav" aria-label="Product">
         <a href="#how">What we automate</a>
         <a href="#process">How it works</a>
         <a href="#pricing">Pricing</a>
-        <a href="#savings">ROI calculator</a>
         <a href="#faq">FAQ</a>
       </nav>
 
-      <nav class="footer__col" aria-label="Company">
-        <span class="footer__h">Company</span>
-        <a href="#">Manifesto</a>
-        <a href="#">Case studies</a>
-        <a href="#">Careers</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <nav class="footer__col" aria-label="Legal">
-        <span class="footer__h">Trust</span>
-        <a href="#">Security &amp; DPA</a>
-        <a href="#">Sub-processors</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
+      <nav class="footer__social" aria-label="Social">
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
+        </a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+          </svg>
+        </a>
+        <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+          </svg>
+        </a>
       </nav>
     </div>
 
     <div class="container footer__base">
       <small>© 2026 Abstero Labs. All rights reserved.</small>
-      <small>Made for operators who would rather sleep than scale headcount.</small>
     </div>
   </footer>
 
