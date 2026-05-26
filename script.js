@@ -12,6 +12,12 @@
 		"(prefers-reduced-motion: reduce)",
 	).matches;
 
+	const trackUmami = (eventName) => {
+		if (typeof umami !== "undefined" && typeof umami.track === "function") {
+			umami.track(eventName);
+		}
+	};
+
 	// ---------- 1. NAV scroll state ----------
 	const nav = document.getElementById("nav");
 	const onScroll = () => {
@@ -208,6 +214,7 @@
 			submit.innerHTML = "Sending…";
 			submit.disabled = true;
 			setTimeout(() => {
+				trackUmami("contact_form_submit");
 				submit.innerHTML = "✓ Request received — we'll reply within 4h";
 				submit.style.background = "var(--accent)";
 				submit.style.color = "var(--accent-ink)";
@@ -285,7 +292,11 @@
 			// Toggle state
 			const newState = !isYearly;
 			pricingSwitch.setAttribute("aria-checked", String(newState));
-			
+
+			if (newState) {
+				trackUmami("pricing_toggle_yearly");
+			}
+
 			// Update labels
 			if (newState) {
 				labelMonthly.classList.remove("is-active");
