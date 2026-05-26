@@ -190,7 +190,10 @@
 			e.preventDefault();
 			const submit = form.querySelector(".contact__submit");
 			const original = submit.innerHTML;
-			const data = Object.fromEntries(new FormData(form).entries());
+
+			// Собираем данные в объект
+			const formData = new FormData(form);
+			const data = Object.fromEntries(formData.entries());
 
 			// Basic validation
 			if (
@@ -211,23 +214,55 @@
 				return;
 			}
 
+			// Меняем статус на "Отправка"
 			submit.innerHTML = "Sending…";
 			submit.disabled = true;
-			setTimeout(() => {
-				trackUmami("contact_form_submit");
-				submit.innerHTML = "✓ Request received — we'll reply within 4h";
-				submit.style.background = "var(--accent)";
-				submit.style.color = "var(--accent-ink)";
-				submit.style.borderColor = "var(--accent)";
-				form.reset();
-				setTimeout(() => {
-					submit.innerHTML = original;
-					submit.disabled = false;
-					submit.style.background = "";
-					submit.style.color = "";
-					submit.style.borderColor = "";
-				}, 4000);
-			}, 700);
+
+			// РЕАЛЬНАЯ ОТПРАВКА ДАННЫХ В WEB3FORMS
+			fetch("https://api.web3forms.com/submit", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify(data),
+			})
+				.then(async (response) => {
+					if (response.status === 200) {
+						// Успех
+						trackUmami("contact_form_submit");
+						submit.innerHTML = "✓ Request received — we'll reply within 4h";
+						submit.style.background = "var(--accent)";
+						submit.style.color = "var(--accent-ink)";
+						submit.style.borderColor = "var(--accent)";
+						form.reset();
+					} else {
+						// Ошибка сервера
+						console.error("Server Error:", await response.text());
+						submit.innerHTML = "Error. Please try again";
+						submit.style.background = "#ff6b6b";
+						submit.style.color = "#fff";
+						submit.style.borderColor = "#ff6b6b";
+					}
+				})
+				.catch((error) => {
+					// Ошибка сети (например, отвалился интернет)
+					console.error("Network Error:", error);
+					submit.innerHTML = "Network error. Try again";
+					submit.style.background = "#ff6b6b";
+					submit.style.color = "#fff";
+					submit.style.borderColor = "#ff6b6b";
+				})
+				.finally(() => {
+					// В любом случае возвращаем кнопку в исходное состояние через 4 секунды
+					setTimeout(() => {
+						submit.innerHTML = original;
+						submit.disabled = false;
+						submit.style.background = "";
+						submit.style.color = "";
+						submit.style.borderColor = "";
+					}, 4000);
+				});
 		});
 	}
 
@@ -277,7 +312,7 @@
 			}
 		});
 	}
-	
+
 	// ---------- 13. Pricing Toggle ----------
 	const pricingSwitch = document.getElementById("pricing-switch");
 	if (pricingSwitch) {
@@ -288,7 +323,7 @@
 
 		pricingSwitch.addEventListener("click", () => {
 			const isYearly = pricingSwitch.getAttribute("aria-checked") === "true";
-			
+
 			// Toggle state
 			const newState = !isYearly;
 			pricingSwitch.setAttribute("aria-checked", String(newState));
@@ -305,11 +340,15 @@
 				labelYearly.classList.remove("is-active");
 				labelMonthly.classList.add("is-active");
 			}
-			
+
 			// Update text
 			if (priceTemplate && periodTemplate) {
-				priceTemplate.textContent = priceTemplate.getAttribute(newState ? "data-yearly" : "data-monthly");
-				periodTemplate.textContent = periodTemplate.getAttribute(newState ? "data-yearly" : "data-monthly");
+				priceTemplate.textContent = priceTemplate.getAttribute(
+					newState ? "data-yearly" : "data-monthly",
+				);
+				periodTemplate.textContent = periodTemplate.getAttribute(
+					newState ? "data-yearly" : "data-monthly",
+				);
 			}
 		});
 	}
