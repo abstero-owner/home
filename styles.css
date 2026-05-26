@@ -1087,10 +1087,10 @@ footer {
 }
 
 .logos__row li img {
-	max-height: 3rem;
-	max-width: 4rem;
+	height: 3rem;
+
 	text-align: center;
-	margin: 0px auto 0.5rem;
+	margin: 0px auto 0.8rem;
 }
 
 .logos__row li a span {
@@ -2255,7 +2255,7 @@ input[type="range"]::-moz-range-thumb {
 
 .footer__inner {
 	display: grid;
-	grid-template-columns: 1.6fr repeat(3, 1fr);
+	grid-template-columns: 2fr 2fr 2fr;
 	gap: clamp(28px, 4vw, 56px);
 	padding-bottom: 56px;
 	border-bottom: 1px solid var(--line);
