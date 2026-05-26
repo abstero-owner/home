@@ -2392,12 +2392,19 @@ input[type="range"]::-moz-range-thumb {
 		display: none;
 	}
 
-	.nav__cta .btn--ghost {
+	.nav__cta {
 		display: none;
 	}
 
+	.nav__burger {
+		display: block;
+		grid-column: 2;
+		justify-self: end;
+	}
+
 	.nav__inner {
-		grid-template-columns: auto 1fr auto;
+		grid-template-columns: 1fr auto;
+		gap: 12px;
 	}
 
 	.steps,
@@ -2423,19 +2430,6 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @media (max-width: 768px) {
-	.nav__burger {
-		display: block;
-	}
-
-	.nav__cta {
-		display: none;
-	}
-
-	.nav__inner {
-		grid-template-columns: auto 1fr auto;
-		gap: 12px;
-	}
-
 	.hero__meta {
 		grid-template-columns: 1fr;
 		gap: 18px;
