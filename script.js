@@ -183,7 +183,45 @@
 	);
 	calc();
 
-	// ---------- 10. Contact form ----------
+	// ---------- 10. Contact intent (from ?intent= or #contact?intent=) ----------
+	const INTENT_PARAM = "intent";
+	const intentInput = document.getElementById("contact-intent");
+
+	const parseHashLink = (href) => {
+		const raw = href.startsWith("#") ? href.slice(1) : href;
+		const [id, query] = raw.split("?");
+		return {
+			selector: id ? `#${id}` : null,
+			intent: query
+				? new URLSearchParams(query).get(INTENT_PARAM)
+				: null,
+		};
+	};
+
+	const readIntentFromUrl = () => {
+		const fromSearch = new URLSearchParams(location.search).get(
+			INTENT_PARAM,
+		);
+		if (fromSearch) return fromSearch;
+		const hash = location.hash.slice(1);
+		if (!hash) return null;
+		const query = hash.includes("?") ? hash.split("?")[1] : "";
+		return query
+			? new URLSearchParams(query).get(INTENT_PARAM)
+			: null;
+	};
+
+	const setContactIntent = (intent) => {
+		if (!intentInput) return;
+		intentInput.value = intent || "";
+	};
+
+	setContactIntent(readIntentFromUrl());
+	window.addEventListener("hashchange", () => {
+		setContactIntent(readIntentFromUrl());
+	});
+
+	// ---------- 11. Contact form ----------
 	const form = document.querySelector(".contact__form");
 	if (form) {
 		form.addEventListener("submit", (e) => {
@@ -266,14 +304,24 @@
 		});
 	}
 
-	// ---------- 11. Smooth anchor scroll w/ offset ----------
+	// ---------- 12. Smooth anchor scroll w/ offset ----------
 	document.querySelectorAll('a[href^="#"]').forEach((a) => {
 		const href = a.getAttribute("href");
 		if (!href || href === "#") return;
 		a.addEventListener("click", (e) => {
-			const target = document.querySelector(href);
+			const { selector, intent } = parseHashLink(href);
+			if (!selector) return;
+			const target = document.querySelector(selector);
 			if (!target) return;
 			e.preventDefault();
+			if (intent) {
+				setContactIntent(intent);
+				history.replaceState(
+					null,
+					"",
+					`${selector}?${INTENT_PARAM}=${encodeURIComponent(intent)}`,
+				);
+			}
 			const top = target.getBoundingClientRect().top + window.scrollY - 80;
 			window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
 		});
