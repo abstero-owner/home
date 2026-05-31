@@ -1,0 +1,45 @@
+---
+import type { FlowCard as FlowCardType } from '../data/flows';
+
+interface Props {
+  flow: FlowCardType;
+}
+
+const { flow } = Astro.props;
+
+const linkHref = flow.hasDetailPage ? `/flows/${flow.slug}/` : `/#contact?intent=flow_${flow.slug}`;
+---
+
+<article class="flow-card" data-category={flow.category} data-tier={flow.tier}>
+  <a
+    href={linkHref}
+    class="flow-card__link"
+    data-umami-event={flow.umamiEvent}
+  >
+    <div class="flow-card__head">
+      <span class="flow-card__tag">{flow.category}</span>
+      <span class="flow-card__metric">{flow.metric}</span>
+    </div>
+
+    <h3>{flow.title}</h3>
+    <p>{flow.description}</p>
+
+    <ul class="flow-card__integrations" aria-label="Integrations">
+      {flow.integrations.map((integration) => (
+        <li>
+          <img
+            src={`/images/integrations/${integration.icon}`}
+            alt={integration.name}
+            width="24"
+            height="24"
+          />
+        </li>
+      ))}
+      {flow.chips?.map((chip) => (
+        <li>
+          <span class="flow-card__chip">{chip.label}</span>
+        </li>
+      ))}
+    </ul>
+  </a>
+</article>

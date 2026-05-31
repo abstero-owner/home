@@ -1,0 +1,87 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  tier: string;
+  priceMonthly: string;
+  priceYearly: string;
+  periodMonthly: string;
+  periodYearly: string;
+  description: string;
+  features: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  ctaVariant: 'solid' | 'ghost';
+  featured: boolean;
+  umamiEvent: string;
+  /** Whether this card has dynamic price switching (Standard only) */
+  hasPriceToggle?: boolean;
+}
+
+const {
+  tier,
+  priceMonthly,
+  priceYearly,
+  periodMonthly,
+  periodYearly,
+  description,
+  features,
+  ctaLabel,
+  ctaHref,
+  ctaVariant,
+  featured,
+  umamiEvent,
+  hasPriceToggle = false,
+} = Astro.props;
+
+const cardClass = `pricing__card${featured ? ' pricing__card--featured' : ''}`;
+---
+
+<article class={cardClass}>
+  <header class="pricing__header">
+    <span class="pricing__tier">{tier}</span>
+    <div class="pricing__price">
+      {hasPriceToggle ? (
+        <>
+          <span
+            class="pricing__amount"
+            id="price-template"
+            data-monthly={priceMonthly}
+            data-yearly={priceYearly}
+          >
+            {priceMonthly}
+          </span>
+          <span
+            class="pricing__period"
+            id="period-template"
+            data-monthly={periodMonthly}
+            data-yearly={periodYearly}
+          >
+            {periodMonthly}
+          </span>
+        </>
+      ) : (
+        <span class="pricing__amount">{priceMonthly}</span>
+      )}
+    </div>
+  </header>
+
+  <p class="pricing__desc">{description}</p>
+
+  <ul class="pricing__features">
+    {features.map((feature) => (
+      <li>{feature}</li>
+    ))}
+  </ul>
+
+  <Button
+    href={ctaHref}
+    variant={ctaVariant}
+    size="lg"
+    magnetic
+    class="pricing__cta"
+    umamiEvent={umamiEvent}
+  >
+    {ctaLabel}
+  </Button>
+</article>

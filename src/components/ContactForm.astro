@@ -1,0 +1,140 @@
+---
+import { site } from "../data/site";
+
+interface Props {
+	formAction?: string;
+}
+
+const { formAction = "https://api.web3forms.com/submit" } = Astro.props;
+---
+
+<form class="contact__form" data-reveal autocomplete="on" action={formAction} method="POST">
+  <input type="hidden" name="access_key" value={site.web3formsKey} />
+  <input type="hidden" name="intent" id="contact-intent" value="" />
+
+  <header class="contact__form-head">
+    <h3>Reach out</h3>
+  </header>
+
+  <label class="field">
+    <span>Your name</span>
+    <input type="text" name="name" required placeholder="Alex Johnson" />
+  </label>
+
+  <label class="field">
+    <span>Work email</span>
+    <input type="email" name="email" required placeholder="email@company.com" />
+  </label>
+
+  <label class="field">
+    <span>What's eating your team's time?<small>(optional)</small></span>
+    <textarea
+      name="message"
+      rows="4"
+      placeholder="A few sentences about the repetitive work you'd like to automate."
+    ></textarea>
+  </label>
+
+  <!-- Honeypot -->
+  <label class="field" style="position:absolute;left:-9999px" aria-hidden="true">
+    <span>Leave this blank</span>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+  </label>
+
+  <button type="submit" class="btn btn--solid btn--lg magnetic contact__submit">
+    Get in touch
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M3 8h10M9 4l4 4-4 4"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
+
+  <p class="contact__fine">
+    Or skip the form and email us directly at
+    <a href={`mailto:${site.email}`}>{site.email}</a>
+  </p>
+</form>
+
+<script>
+  const trackUmami = (eventName: string) => {
+    if (typeof (window as any).umami !== 'undefined' && typeof (window as any).umami.track === 'function') {
+      (window as any).umami.track(eventName);
+    }
+  };
+
+  const form = document.querySelector('.contact__form') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submit = form.querySelector('.contact__submit') as HTMLButtonElement;
+      const original = submit.innerHTML;
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      if (
+        !data.name ||
+        !data.email ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email as string)
+      ) {
+        submit.innerHTML = 'Please fill name & valid email';
+        submit.style.background = '#ff6b6b';
+        submit.style.color = '#fff';
+        submit.style.borderColor = '#ff6b6b';
+        setTimeout(() => {
+          submit.innerHTML = original;
+          submit.style.background = '';
+          submit.style.color = '';
+          submit.style.borderColor = '';
+        }, 2400);
+        return;
+      }
+
+      submit.innerHTML = 'Sending…';
+      submit.disabled = true;
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(async (response) => {
+          if (response.status === 200) {
+            trackUmami('contact_form_submit');
+            submit.innerHTML = '✓ Request received — we\'ll reply within 4h';
+            submit.style.background = 'var(--accent)';
+            submit.style.color = 'var(--accent-ink)';
+            submit.style.borderColor = 'var(--accent)';
+            form.reset();
+          } else {
+            console.error('Server Error:', await response.text());
+            submit.innerHTML = 'Error. Please try again';
+            submit.style.background = '#ff6b6b';
+            submit.style.color = '#fff';
+            submit.style.borderColor = '#ff6b6b';
+          }
+        })
+        .catch((error) => {
+          console.error('Network Error:', error);
+          submit.innerHTML = 'Network error. Try again';
+          submit.style.background = '#ff6b6b';
+          submit.style.color = '#fff';
+          submit.style.borderColor = '#ff6b6b';
+        })
+        .finally(() => {
+          setTimeout(() => {
+            submit.innerHTML = original;
+            submit.disabled = false;
+            submit.style.background = '';
+            submit.style.color = '';
+            submit.style.borderColor = '';
+          }, 4000);
+        });
+    });
+  }
+</script>

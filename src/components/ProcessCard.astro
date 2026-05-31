@@ -1,0 +1,16 @@
+---
+interface Props {
+  num: string;
+  title: string;
+  description: string;
+  index: number;
+}
+
+const { num, title, description, index } = Astro.props;
+---
+
+<article class={`process__card process__card--${index + 1}`}>
+  <span class="process__num">{num}</span>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</article>

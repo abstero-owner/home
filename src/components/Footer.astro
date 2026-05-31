@@ -1,0 +1,39 @@
+---
+import { navItems } from '../data/navigation';
+import { socialLinks } from '../data/social';
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <a href="/" class="footer__brand brand">
+      <img src="/images/brand/logo.svg" alt="" width="32" height="32" />
+      <span class="brand__name">{site.name}</span>
+    </a>
+
+    <nav class="footer__nav" aria-label="Product">
+      {navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <nav class="footer__social" aria-label="Social">
+      {socialLinks.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={link.platform}
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d={link.svgPath} />
+          </svg>
+        </a>
+      ))}
+    </nav>
+  </div>
+
+  <div class="container footer__base">
+    <small>{site.copyright}</small>
+  </div>
+</footer>

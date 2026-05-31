@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import FlowCard from '../../components/FlowCard.astro';
+import FlowsCta from '../../components/FlowsCta.astro';
+import { flows, flowCategories } from '../../data/flows';
+
+const title = 'Automation Flows | Abstero';
+const description = 'Browse pre-built AI workflows for customer support, reporting, and sales ops. Standard automations go live in ~7 days — no upfront cost until they work.';
+const canonical = 'https://abstero.com/flows.html'; // Or '/flows/'
+const ogTitle = title;
+const ogDescription = 'Pre-built workflows that handle invoices, customer replies, sales reports, lead sorting, and more — hosted and maintained by us.';
+const twitterCard = 'summary_large_image';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  twitterCard={twitterCard}
+>
+  <section class="section flows-page">
+    <div class="container">
+      <SectionHead eyebrow="FLOWS">
+        <h1 slot="title" class="section__title">
+          Production-ready automations you can <span class="hl">turn on</span> — not configure.
+        </h1>
+        <p slot="lede" class="section__lede">
+          Each flow below is something we've already built and run for other online businesses.
+          Pick one close to your problem, we adapt it to your stack, and it goes live in about a week.
+        </p>
+      </SectionHead>
+
+      <div class="flows-toolbar" data-reveal>
+        <div class="flows-filters" role="group" aria-label="Filter by category">
+          <button type="button" class="flows-filters__btn is-active" data-flows-filter="all">All</button>
+          {flowCategories.map((cat) => (
+            <button type="button" class="flows-filters__btn" data-flows-filter={cat}>{cat}</button>
+          ))}
+        </div>
+        <div class="flows-view" role="group" aria-label="View layout">
+          <button type="button" class="flows-view__btn is-active" data-flows-view="grid" aria-pressed="true">Grid</button>
+          <button type="button" class="flows-view__btn" data-flows-view="list" aria-pressed="false">List</button>
+        </div>
+      </div>
+
+      <div class="flows-grid" id="flows-grid" data-reveal-stagger>
+        {flows.map((flow) => (
+          <FlowCard flow={flow} />
+        ))}
+      </div>
+
+      <div class="flows-empty" id="flows-empty" hidden>
+        <p>No flows in this category yet. <a href="/#contact?intent=flows_talk_to_us">Tell us what you need</a> — we've probably built something close.</p>
+      </div>
+
+      <FlowsCta contactHref="/#contact?intent=flows_talk_to_us" />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Flows catalog filter & view logic
+  const flowsGrid = document.getElementById('flows-grid');
+  const flowsFilters = document.querySelectorAll('[data-flows-filter]');
+  const flowsViewBtns = document.querySelectorAll('[data-flows-view]');
+  const flowsEmpty = document.getElementById('flows-empty');
+
+  if (flowsGrid && flowsFilters.length) {
+    let activeCategory = 'all';
+
+    const applyFilter = () => {
+      const cards = flowsGrid.querySelectorAll('.flow-card') as NodeListOf<HTMLElement>;
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = activeCategory === 'all' || card.dataset.category === activeCategory;
+        card.hidden = !match;
+        if (match) visible++;
+      });
+      if (flowsEmpty) flowsEmpty.hidden = visible > 0;
+    };
+
+    flowsFilters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetBtn = btn as HTMLElement;
+        activeCategory = targetBtn.dataset.flowsFilter || 'all';
+        flowsFilters.forEach((b) => b.classList.toggle('is-active', b === btn));
+        applyFilter();
+      });
+    });
+
+    applyFilter();
+  }
+
+  if (flowsGrid && flowsViewBtns.length) {
+    flowsViewBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const targetBtn = btn as HTMLElement;
+        const view = targetBtn.dataset.flowsView;
+        flowsViewBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+        flowsGrid.classList.toggle('flows-grid--list', view === 'list');
+        targetBtn.setAttribute('aria-pressed', 'true');
+        flowsViewBtns.forEach((b) => {
+           if(b !== targetBtn) b.setAttribute('aria-pressed', 'false');
+        });
+      });
+    });
+  }
+</script>

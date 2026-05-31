@@ -1,0 +1,193 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import SectionHead from "../components/SectionHead.astro";
+import ProcessCard from "../components/ProcessCard.astro";
+import PricingCard from "../components/PricingCard.astro";
+import PricingToggle from "../components/PricingToggle.astro";
+import FaqItem from "../components/FaqItem.astro";
+import ContactForm from "../components/ContactForm.astro";
+import FlowsCta from "../components/FlowsCta.astro";
+import DashboardMock from "../components/DashboardMock.astro";
+import LogoStrip from "../components/LogoStrip.astro";
+
+import { heroMeta } from "../data/heroMeta";
+import { steps } from "../data/steps";
+import { processSteps } from "../data/process";
+import { pricingTiers } from "../data/pricing";
+import { faqItems } from "../data/faq";
+---
+
+<BaseLayout>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <a href="#how" class="hero__pill" data-reveal>
+        <span class="hero__pill-dot" aria-hidden="true"></span>
+        <span>A growing library of production-ready flows</span>
+        <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path
+            d="M6 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+
+      <h1 class="hero__title" data-reveal>
+        <span class="char-stagger hl">Cut payroll costs</span>
+        <span class="char-stagger">with workflows that run themselves.</span>
+      </h1>
+
+      <p class="hero__sub" data-reveal>
+        AI-powered systems that take over the repetitive work in customer support,
+        order processing, and ops for online businesses - replacing hours of daily manual work,
+        <strong>built, hosted, and maintained by us</strong>.
+      </p>
+
+      <div class="hero__cta" data-reveal>
+        <Button
+          href="#contact?intent=hero_contact_us"
+          variant="solid"
+          size="lg"
+          magnetic
+          umamiEvent="hero_cta_contact_us"
+        >
+          Contact Us
+        </Button>
+      </div>
+
+      <ul class="hero__meta" data-reveal>
+        {heroMeta.map((item) => (
+          <li>
+            <span class="hero__meta-num">{item.value}</span>
+            <span>{item.label}</span>
+          </li>
+        ))}
+      </ul>
+
+      <DashboardMock />
+      <LogoStrip />
+    </div>
+  </section>
+
+  <!-- WHAT WE AUTOMATE -->
+  <section class="section" id="how">
+    <div class="container">
+      <SectionHead eyebrow="WHAT WE AUTOMATE">
+        <h2 slot="title" class="section__title">
+          <span class="hl">Don't hire</span> another employee just to copy-paste data between apps.
+        </h2>
+        <p slot="lede" class="section__lede">
+          Paying people to act like software is a waste of payroll. We build AI systems that
+          take over the mindless data routing in your support, sales, and reporting - running flawlessly 24/7
+        </p>
+      </SectionHead>
+
+      <ol class="steps" data-reveal-stagger>
+        {steps.map((step) => (
+          <li class="step">
+            <span class="step__num">{step.num}</span>
+            <h3>{step.title}</h3>
+            <p>{step.description}</p>
+          </li>
+        ))}
+      </ol>
+
+      <FlowsCta />
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section section--alt" id="process">
+    <div class="container">
+      <SectionHead eyebrow="How we work together">
+        <h2 slot="title" class="section__title">
+          You don't need a tech team.<br />You don't pay a cent until it works.
+        </h2>
+        <p slot="lede" class="section__lede">
+          We handle every technical part of the process. You decide what to fix and approve the
+          plan - we do everything else.
+        </p>
+      </SectionHead>
+
+      <div class="process" id="processCards">
+        {processSteps.map((step, index) => (
+          <ProcessCard
+            num={step.num}
+            title={step.title}
+            description={step.description}
+            index={index}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <SectionHead eyebrow="Pricing">
+        <h2 slot="title" class="section__title">
+          <span class="hl">Pay when it works. </span><br/>Monthly or save with annual.
+        </h2>
+        <p slot="lede" class="section__lede">
+          A standard automation or a custom build for your business. You only start paying when
+          it's live and doing the work.
+        </p>
+      </SectionHead>
+
+      <PricingToggle />
+
+      <div class="pricing" data-reveal-stagger>
+        {pricingTiers.map((tier) => (
+          <PricingCard
+            {...tier}
+            hasPriceToggle={!tier.featured}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <SectionHead>
+        <h2 slot="title" class="section__title">F.A.Q</h2>
+        <p slot="lede" class="section__lede">
+          If something isn't covered here, ask us directly on the intro call - we'd rather
+          over-explain than have you wonder.
+        </p>
+      </SectionHead>
+
+      <div class="faq" data-reveal-stagger>
+        {faqItems.map((item) => (
+          <FaqItem question={item.question}>
+            {item.answer}
+          </FaqItem>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--contact" id="contact">
+    <div class="container contact">
+      <div class="contact__copy" data-reveal>
+        <span class="eyebrow">Let's talk</span>
+        <h2 class="section__title">
+          Spend <span class="hl">twenty</span> minutes now and save your team <span class="hl">hundreds</span> of hours a year.
+        </h2>
+        <p class="section__lede">
+          A short call to walk through your operational pain points. We'll tell you honestly
+          which can be automated, how, and what it would cost - whether you work with us after or not.
+        </p>
+      </div>
+
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>

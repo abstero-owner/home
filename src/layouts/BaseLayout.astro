@@ -1,0 +1,80 @@
+---
+import "../styles/global.css";
+import BgLayers from "../components/BgLayers.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { site } from "../data/site";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	ogTitle?: string;
+	ogDescription?: string;
+	ogType?: string;
+	twitterCard?: string;
+	jsonLd?: object;
+}
+
+const {
+	title = site.defaultTitle,
+	description = site.defaultDescription,
+	canonical,
+	ogTitle,
+	ogDescription,
+	ogType = "website",
+	twitterCard = "summary_large_image",
+	jsonLd,
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <script is:inline>
+    document.documentElement.classList.remove("no-js");
+    document.documentElement.classList.add("js");
+  </script>
+  <script
+    defer
+    src="https://cloud.umami.is/script.js"
+    data-website-id={site.umamiId}
+  ></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content={site.themeColor} />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {canonical && <link rel="canonical" href={canonical} />}
+  {ogTitle && <meta property="og:title" content={ogTitle} />}
+  {ogDescription && <meta property="og:description" content={ogDescription} />}
+  <meta property="og:type" content={ogType} />
+  {canonical && <meta property="og:url" content={canonical} />}
+  <meta name="twitter:card" content={twitterCard} />
+  {ogTitle && <meta name="twitter:title" content={ogTitle} />}
+  {ogDescription && <meta name="twitter:description" content={ogDescription} />}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=JetBrains+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
+</head>
+<body>
+  <BgLayers />
+  <Header currentPath={currentPath} />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <script>
+    import '../scripts/animations';
+  </script>
+</body>
+</html>

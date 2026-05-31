@@ -1,0 +1,20 @@
+---
+import { heroIntegrations } from '../data/integrations';
+---
+
+<div class="logos" data-reveal>
+  <span class="logos__label">Connects with the tools your team already runs on</span>
+  <ul class="logos__row">
+    {heroIntegrations.map((integration) => (
+      <li>
+        <a href={integration.href} target="_blank" rel="noopener">
+          <img
+            src={`/images/integrations/${integration.icon}`}
+            alt={integration.displayName}
+          />
+          <span>{integration.displayName}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

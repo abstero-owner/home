@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Button from '../../components/Button.astro';
+import { site } from '../../data/site';
+import { flows } from '../../data/flows';
+
+const flow = flows.find(f => f.slug === 'sort-leads-priority');
+if (!flow) {
+  throw new Error('Flow sort-leads-priority not found');
+}
+
+const title = 'Sort New Leads by Priority | Abstero Flow';
+const description = 'Score and route inbound leads from forms and ads to the right rep in HubSpot — no manual spreadsheet triage.';
+const canonical = `${site.url}/flows/sort-leads-priority/`;
+const ogTitle = title;
+const ogDescription = 'New leads get scored, tagged, and assigned automatically based on your ICP rules.';
+const twitterCard = 'summary_large_image';
+
+const relatedFlows = flows.filter(f => f.slug !== flow.slug && f.category === flow.category).slice(0, 3);
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  twitterCard={twitterCard}
+>
+  <article class="section flow-detail-page">
+    <div class="container">
+      <nav class="flow-detail__breadcrumbs" aria-label="Breadcrumb" data-reveal>
+        <ol>
+          <li><a href="/flows/">Flows</a></li>
+          <li><span aria-current="page">{flow.category}</span></li>
+        </ol>
+      </nav>
+
+      <header class="flow-detail__hero" data-reveal>
+        <div class="flow-detail__hero-meta">
+          <span class="flow-card__tag">{flow.category}</span>
+          <span class="flow-detail__time">{flow.metric}</span>
+        </div>
+        <h1>{flow.title}</h1>
+        <p class="flow-detail__tagline">
+          Form fills and inbound leads get scored against your ICP, tagged, and routed to
+          the right rep — hot leads ping Slack within minutes.
+        </p>
+      </header>
+
+      <section class="flow-detail__section" data-reveal>
+        <h2>The problem</h2>
+        <p>
+          Leads pile up in HubSpot or a shared inbox. Someone exports to a sheet every morning, guesses who's worth a
+          call, and assigns by round-robin. Good leads wait. Bad fits get the same attention as enterprise deals.
+        </p>
+      </section>
+
+      <section class="flow-detail__section" data-reveal>
+        <h2>How it works</h2>
+        <ol class="flow-detail__steps">
+          <li class="flow-detail__step">
+            <span class="flow-detail__step-num">01</span>
+            <h3>Capture the lead</h3>
+            <p>New form submission or HubSpot contact triggers the flow with all available fields.</p>
+          </li>
+          <li class="flow-detail__step">
+            <span class="flow-detail__step-num">02</span>
+            <h3>Enrich and score</h3>
+            <p>Company size, industry, budget signals, and source channel map to a priority score you define.</p>
+          </li>
+          <li class="flow-detail__step">
+            <span class="flow-detail__step-num">03</span>
+            <h3>Route and notify</h3>
+            <p>High-priority leads assign to the right owner and post to Slack. Low-fit leads get a nurture tag.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="flow-detail__section" data-reveal>
+        <h2>Integrations</h2>
+        <div class="flow-detail__integrations">
+          {flow.integrations.map((integration) => (
+            <span class="flow-detail__integration">
+              <img
+                src={`/images/integrations/${integration.icon}`}
+                alt=""
+                width="22"
+                height="22"
+              />
+              {integration.name}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section class="flow-detail__section" data-reveal>
+        <h2>What you get</h2>
+        <ul class="flow-detail__list">
+          <li>Hot leads reach a rep within minutes, not next standup</li>
+          <li>Scoring rules you can adjust without rebuilding the flow</li>
+          <li>Clear audit of why each lead got its priority tag</li>
+        </ul>
+      </section>
+
+      <section class="flow-detail__tier" data-reveal>
+        <span class="flow-detail__tier-label">Pricing</span>
+        <p>Available as a <strong>Standard Automation</strong> — $300–$600/mo.</p>
+        <Button href="/#pricing" variant="ghost" size="sm" arrow>
+          See pricing details
+        </Button>
+      </section>
+
+      <div class="flow-detail__cta-wrap" data-reveal>
+        <Button
+          href={`/#contact?intent=flow_detail_${flow.slug.replace(/-/g, '_')}`}
+          variant="solid"
+          size="lg"
+          magnetic
+          umamiEvent={`flow_detail_cta_${flow.slug.replace(/-/g, '_')}`}
+        >
+          Automate this
+        </Button>
+      </div>
+
+      {relatedFlows.length > 0 && (
+        <section class="flow-detail__related" data-reveal>
+          <h2>Related flows</h2>
+          <div class="flow-detail__related-grid">
+            {relatedFlows.map((related) => (
+              <a
+                href={related.hasDetailPage ? `/flows/${related.slug}/` : `/#contact?intent=flow_${related.slug}`}
+                class="flow-detail__related-card"
+              >
+                <span>{related.category}</span>
+                <h3>{related.title}</h3>
+                <p>{related.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </article>
+</BaseLayout>

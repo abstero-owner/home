@@ -1,0 +1,76 @@
+---
+/**
+ * PricingToggle — monthly/yearly switch with "2 months free" badge.
+ * Script handles the toggle state and updates price elements by ID.
+ */
+---
+
+<div class="pricing__toggle" data-reveal>
+  <span class="pricing__toggle-label is-active" id="label-monthly">Monthly</span>
+  <button
+    class="pricing__switch"
+    id="pricing-switch"
+    role="switch"
+    aria-checked="false"
+    aria-label="Toggle yearly pricing"
+  >
+    <span class="pricing__switch-knob"></span>
+  </button>
+  <span class="pricing__toggle-label" id="label-yearly">
+    Yearly
+    <span class="pricing__badge-save">2 months free</span>
+  </span>
+</div>
+
+<script>
+  const pricingSwitch = document.getElementById('pricing-switch');
+  if (pricingSwitch) {
+    const labelMonthly = document.getElementById('label-monthly');
+    const labelYearly = document.getElementById('label-yearly');
+    const priceTemplate = document.getElementById('price-template');
+    const periodTemplate = document.getElementById('period-template');
+
+    const trackUmami = (eventName: string) => {
+      if (typeof (window as any).umami !== 'undefined' && typeof (window as any).umami.track === 'function') {
+        (window as any).umami.track(eventName);
+      }
+    };
+
+    pricingSwitch.addEventListener('click', () => {
+      const isYearly = pricingSwitch.getAttribute('aria-checked') === 'true';
+      const newState = !isYearly;
+      pricingSwitch.setAttribute('aria-checked', String(newState));
+
+      if (newState) trackUmami('pricing_toggle_yearly');
+
+      if (newState) {
+        labelMonthly?.classList.remove('is-active');
+        labelYearly?.classList.add('is-active');
+      } else {
+        labelYearly?.classList.remove('is-active');
+        labelMonthly?.classList.add('is-active');
+      }
+
+      if (priceTemplate && periodTemplate) {
+        priceTemplate.textContent = priceTemplate.getAttribute(
+          newState ? 'data-yearly' : 'data-monthly',
+        );
+        periodTemplate.textContent = periodTemplate.getAttribute(
+          newState ? 'data-yearly' : 'data-monthly',
+        );
+      }
+    });
+
+    // Also allow clicking labels to toggle
+    labelMonthly?.addEventListener('click', () => {
+      if (pricingSwitch.getAttribute('aria-checked') === 'true') {
+        pricingSwitch.click();
+      }
+    });
+    labelYearly?.addEventListener('click', () => {
+      if (pricingSwitch.getAttribute('aria-checked') === 'false') {
+        pricingSwitch.click();
+      }
+    });
+  }
+</script>

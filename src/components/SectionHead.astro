@@ -1,0 +1,15 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+interface Props {
+  eyebrow?: string;
+}
+
+const { eyebrow } = Astro.props;
+---
+
+<div class="section__head" data-reveal>
+  {eyebrow && <Eyebrow label={eyebrow} />}
+  <slot name="title" />
+  <slot name="lede" />
+</div>

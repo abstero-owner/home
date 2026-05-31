@@ -1,0 +1,30 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  contactHref?: string;
+  umamiEvent?: string;
+}
+
+const {
+  contactHref = '/#contact?intent=flows_talk_to_us',
+  umamiEvent = 'flows_cta_talk_to_us',
+} = Astro.props;
+---
+
+<div class="flows__cta" data-reveal>
+  <p class="flows__cta-text">
+    Don't see your use case?&nbsp;<strong>We've probably built something close</strong>
+  </p>
+  <Button
+    href={contactHref}
+    variant="solid"
+    size="lg"
+    magnetic
+    class="pricing__cta"
+    style="max-width:14rem"
+    umamiEvent={umamiEvent}
+  >
+    Talk to us
+  </Button>
+</div>

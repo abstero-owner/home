@@ -1,0 +1,117 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="hero__mock" data-reveal data-parallax="0.04">
+  <div class="mock-window">
+    <div class="mock-window__bar">
+      <span class="mock-dot mock-dot--r"></span>
+      <span class="mock-dot mock-dot--y"></span>
+      <span class="mock-dot mock-dot--g"></span>
+      <div class="mock-url">abstero.app/console · flows /<strong>invoice-ops</strong></div>
+      <div class="mock-window__tools">
+        <span class="mock-status"><span class="pulse"></span>Live</span>
+      </div>
+    </div>
+
+    <div class="mock-body">
+      <aside class="mock-side">
+        <div class="mock-side__brand">
+          <span class="brand__mark sm" aria-hidden="true">
+            <img src="/images/brand/logo.svg" alt="" />
+          </span>
+          <span>{site.name}</span>
+        </div>
+
+        <div class="mock-side__group">
+          <span class="mock-side__label">Workspace</span>
+          <a class="mock-side__item is-active"><span>◆</span>Overview</a>
+          <a class="mock-side__item"><span>◇</span>Flows<em>14</em></a>
+          <a class="mock-side__item"><span>◇</span>Runs<em>2,841</em></a>
+          <a class="mock-side__item"><span>◇</span>Integrations</a>
+        </div>
+
+        <div class="mock-side__group">
+          <span class="mock-side__label">Automations</span>
+          <a class="mock-side__item"><span>›</span>Answer customer emails</a>
+          <a class="mock-side__item"><span>›</span>Read invoices from inbox</a>
+          <a class="mock-side__item"><span>›</span>Daily sales report</a>
+          <a class="mock-side__item"><span>›</span>Sort new leads</a>
+        </div>
+      </aside>
+
+      <section class="mock-main">
+        <header class="mock-main__head">
+          <div>
+            <h3>Operations</h3>
+            <p>Live flows · last 30 days</p>
+          </div>
+          <div class="mock-main__head-actions">
+            <span class="chip">Demo workspace</span>
+            <span class="chip chip--alt">▾ This month</span>
+          </div>
+        </header>
+
+        <div class="mock-stats">
+          <article class="mock-stat">
+            <span class="mock-stat__label">Hours saved</span>
+            <strong class="mock-stat__val">1,284<small>h</small></strong>
+            <span class="mock-stat__delta up">▲ 18.2%</span>
+          </article>
+          <article class="mock-stat">
+            <span class="mock-stat__label">Ops cost cut</span>
+            <strong class="mock-stat__val">$42,610</strong>
+            <span class="mock-stat__delta up">▲ 9.1%</span>
+          </article>
+          <article class="mock-stat is-accent">
+            <span class="mock-stat__label">Success rate</span>
+            <strong class="mock-stat__val">99.4<small>%</small></strong>
+            <span class="mock-stat__delta neutral">- stable</span>
+          </article>
+        </div>
+
+        <div class="mock-table">
+          <div class="mock-table__head">
+            <span>Flow</span><span>Trigger</span><span>Last run</span><span>Status</span>
+          </div>
+          <div class="mock-table__row">
+            <span class="mock-flow"><i class="dot dot--g"></i>Read invoices → save to accounting</span>
+            <span class="muted">New email</span>
+            <span class="muted">2m ago</span>
+            <span class="tag tag--ok">success</span>
+          </div>
+          <div class="mock-table__row">
+            <span class="mock-flow"><i class="dot dot--g"></i>Sort new leads by priority</span>
+            <span class="muted">Form submitted</span>
+            <span class="muted">7m ago</span>
+            <span class="tag tag--ok">success</span>
+          </div>
+          <div class="mock-table__row">
+            <span class="mock-flow"><i class="dot dot--y"></i>Reply to customer questions</span>
+            <span class="muted">New chat message</span>
+            <span class="muted">12m ago</span>
+            <span class="tag tag--warn">retried</span>
+          </div>
+          <div class="mock-table__row">
+            <span class="mock-flow"><i class="dot dot--g"></i>Send daily sales summary</span>
+            <span class="muted">Every day 9:00</span>
+            <span class="muted">3h ago</span>
+            <span class="tag tag--ok">success</span>
+          </div>
+          <div class="mock-table__row">
+            <span class="mock-flow"><i class="dot dot--g"></i>Alert when stock runs low</span>
+            <span class="muted">Shopify update</span>
+            <span class="muted">5h ago</span>
+            <span class="tag tag--ok">success</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="float-card float-card--br" data-parallax="0.08">
+    <span class="float-card__k">Flow status</span>
+    <strong><span class="pulse"></span>14 / 14 healthy</strong>
+    <span class="float-card__sub">Last incident · 41 days ago</span>
+  </div>
+</div>

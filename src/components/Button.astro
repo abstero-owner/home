@@ -1,0 +1,47 @@
+---
+import ArrowIcon from './ArrowIcon.astro';
+
+interface Props {
+  href: string;
+  variant?: 'solid' | 'ghost';
+  size?: 'sm' | 'lg';
+  magnetic?: boolean;
+  umamiEvent?: string;
+  class?: string;
+  style?: string;
+  type?: 'button' | 'submit';
+  arrow?: boolean;
+}
+
+const {
+  href,
+  variant = 'solid',
+  size = 'lg',
+  magnetic = false,
+  umamiEvent,
+  class: extraClass = '',
+  style,
+  type,
+  arrow = true,
+} = Astro.props;
+
+const classes = [
+  'btn',
+  `btn--${variant}`,
+  `btn--${size}`,
+  magnetic && 'magnetic',
+  extraClass,
+].filter(Boolean).join(' ');
+
+const isButton = type !== undefined;
+---
+
+{isButton ? (
+  <button type={type} class={classes} style={style} data-umami-event={umamiEvent}>
+    <slot />{arrow && <ArrowIcon />}
+  </button>
+) : (
+  <a href={href} class={classes} style={style} data-umami-event={umamiEvent}>
+    <slot />{arrow && <ArrowIcon />}
+  </a>
+)}

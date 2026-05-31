@@ -1,0 +1,94 @@
+---
+import { navItems } from '../data/navigation';
+import { site } from '../data/site';
+import Button from './Button.astro';
+import ArrowIcon from './ArrowIcon.astro';
+
+interface Props {
+  /** Current page path for active link detection */
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+---
+
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="/" class="brand" aria-label={`${site.name} home`}>
+      <span class="brand__mark" aria-hidden="true">
+        <img src="/images/brand/logo.svg" alt={`${site.name} Logo`} />
+      </span>
+      <span class="brand__name">{site.name}</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      {navItems.map((item) => (
+        <a href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="nav__cta">
+      <Button
+        href="/#contact?intent=nav_request_demo"
+        variant="solid"
+        size="sm"
+        umamiEvent="nav_cta_request_demo"
+      >
+        Request a Demo
+      </Button>
+    </div>
+
+    <button
+      class="nav__burger"
+      aria-label="Open menu"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__inner">
+    {navItems.map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+    <a
+      href="/#contact?intent=nav_request_demo"
+      class="btn btn--solid"
+      data-umami-event="nav_cta_request_demo"
+    >
+      Request a Demo
+    </a>
+  </div>
+</div>
+
+<script>
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (!nav) return;
+    nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  const burger = document.querySelector('.nav__burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (burger && mobileMenu) {
+    const toggle = (open?: boolean) => {
+      const next = open ?? !mobileMenu.classList.contains('is-open');
+      mobileMenu.classList.toggle('is-open', next);
+      burger.setAttribute('aria-expanded', String(next));
+      mobileMenu.setAttribute('aria-hidden', String(!next));
+      document.body.style.overflow = next ? 'hidden' : '';
+    };
+    burger.addEventListener('click', () => toggle());
+    mobileMenu
+      .querySelectorAll('a')
+      .forEach((a) => a.addEventListener('click', () => toggle(false)));
+  }
+</script>
