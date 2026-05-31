@@ -83,7 +83,7 @@
 
 	// ---------- 5. Flow card cursor-tracked glow ----------
 	if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
-		document.querySelectorAll(".flow-card").forEach((card) => {
+		document.querySelectorAll("article.flow-card, a.flow-card").forEach((card) => {
 			card.addEventListener("mousemove", (e) => {
 				const r = card.getBoundingClientRect();
 				const mx = ((e.clientX - r.left) / r.width) * 100;
@@ -361,7 +361,54 @@
 		});
 	}
 
-	// ---------- 13. Pricing Toggle ----------
+	// ---------- 13. Flows catalog filter & view ----------
+	const flowsGrid = document.getElementById("flows-grid");
+	const flowsFilters = document.querySelectorAll("[data-flows-filter]");
+	const flowsViewBtns = document.querySelectorAll("[data-flows-view]");
+	const flowsEmpty = document.getElementById("flows-empty");
+
+	if (flowsGrid && flowsFilters.length) {
+		let activeCategory = "all";
+
+		const applyFilter = () => {
+			const cards = flowsGrid.querySelectorAll(".flow-card");
+			let visible = 0;
+			cards.forEach((card) => {
+				const match =
+					activeCategory === "all" ||
+					card.dataset.category === activeCategory;
+				card.hidden = !match;
+				if (match) visible++;
+			});
+			if (flowsEmpty) flowsEmpty.hidden = visible > 0;
+		};
+
+		flowsFilters.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				activeCategory = btn.dataset.flowsFilter;
+				flowsFilters.forEach((b) =>
+					b.classList.toggle("is-active", b === btn),
+				);
+				applyFilter();
+			});
+		});
+
+		applyFilter();
+	}
+
+	if (flowsGrid && flowsViewBtns.length) {
+		flowsViewBtns.forEach((btn) => {
+			btn.addEventListener("click", () => {
+				const view = btn.dataset.flowsView;
+				flowsViewBtns.forEach((b) =>
+					b.classList.toggle("is-active", b === btn),
+				);
+				flowsGrid.classList.toggle("flows-grid--list", view === "list");
+			});
+		});
+	}
+
+	// ---------- 14. Pricing Toggle ----------
 	const pricingSwitch = document.getElementById("pricing-switch");
 	if (pricingSwitch) {
 		const labelMonthly = document.getElementById("label-monthly");

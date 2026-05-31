@@ -2588,3 +2588,542 @@ input[type="range"]::-moz-range-thumb {
 		transform: none;
 	}
 }
+
+/* ===== Flows pages ===== */
+.flows-page {
+	padding-top: clamp(48px, 8vw, 96px);
+}
+
+.flows-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px 24px;
+	margin-bottom: clamp(32px, 5vw, 48px);
+}
+
+.flows-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.flows-filters__btn {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--fg-3);
+	padding: 8px 16px;
+	border-radius: var(--r-pill);
+	border: 1px solid var(--line);
+	background: transparent;
+	transition:
+		color 0.2s var(--ease),
+		border-color 0.2s var(--ease),
+		background 0.2s var(--ease);
+}
+
+.flows-filters__btn:hover {
+	color: var(--fg);
+	border-color: var(--line-2);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+.flows-filters__btn.is-active {
+	color: var(--accent-ink);
+	background: var(--accent);
+	border-color: var(--accent);
+}
+
+.flows-view {
+	display: inline-flex;
+	border: 1px solid var(--line);
+	border-radius: var(--r-pill);
+	overflow: hidden;
+}
+
+.flows-view__btn {
+	font-size: 12.5px;
+	font-family: var(--font-mono);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--fg-3);
+	padding: 8px 14px;
+	transition:
+		color 0.2s var(--ease),
+		background 0.2s var(--ease);
+}
+
+.flows-view__btn.is-active {
+	color: var(--fg);
+	background: rgba(255, 255, 255, 0.06);
+}
+
+.flows-view__btn+.flows-view__btn {
+	border-left: 1px solid var(--line);
+}
+
+.flows-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+}
+
+.flows-grid--list {
+	grid-template-columns: 1fr;
+}
+
+.flows-grid--list .flow-card {
+	padding: 22px 26px;
+}
+
+.flows-grid--list .flow-card__link {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px 24px;
+}
+
+.flows-grid--list .flow-card h3 {
+	flex: 1 1 220px;
+	font-size: 18px;
+}
+
+.flows-grid--list .flow-card__link>p {
+	flex: 2 1 280px;
+	margin: 0;
+}
+
+.flows-grid--list .flow-card__head {
+	flex: 1 1 100%;
+}
+
+.flows-grid--list .flow-card__integrations {
+	margin-left: auto;
+	padding-top: 0;
+	border-top: 0;
+}
+
+.flows-empty {
+	text-align: center;
+	padding: clamp(48px, 8vw, 80px) 24px;
+	border: 1px dashed var(--line-2);
+	border-radius: var(--r-lg);
+	color: var(--fg-3);
+}
+
+.flows-empty[hidden] {
+	display: none;
+}
+
+.flows-empty p {
+	margin: 0;
+	font-size: 15px;
+}
+
+.flow-card__link {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	flex: 1;
+	height: 100%;
+	color: inherit;
+	text-decoration: none;
+}
+
+.flow-card__metric {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--fg-4);
+	letter-spacing: 0.02em;
+}
+
+.flow-card__integrations {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: auto;
+	padding-top: 16px;
+	border-top: 1px solid var(--line);
+}
+
+.flow-card__integrations li {
+	display: inline-flex;
+}
+
+.flow-card__integrations img {
+	width: 24px;
+	height: 24px;
+	opacity: 0.85;
+}
+
+.flow-card__chip {
+	font-size: 11px;
+	font-family: var(--font-mono);
+	padding: 4px 10px;
+	border: 1px solid var(--line);
+	border-radius: var(--r-pill);
+	color: var(--fg-3);
+}
+
+/* =========================================================
+   FLOW DETAIL — aligned to site type scale & components
+   ========================================================= */
+.flow-detail-page {
+	padding-top: clamp(40px, 7vw, 88px);
+}
+
+.flow-detail__hero,
+.flow-detail__section,
+.flow-detail__tier,
+.flow-detail__cta-wrap {
+	max-width: 760px;
+}
+
+/* ---- breadcrumbs ---- */
+.flow-detail__breadcrumbs {
+	margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.flow-detail__breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-mono);
+	font-size: 12px;
+	letter-spacing: 0.02em;
+	color: var(--fg-4);
+}
+
+.flow-detail__breadcrumbs li {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.flow-detail__breadcrumbs li+li::before {
+	content: "/";
+	color: var(--fg-4);
+}
+
+.flow-detail__breadcrumbs a {
+	color: var(--fg-3);
+	text-decoration: none;
+	transition: color 0.2s var(--ease);
+}
+
+.flow-detail__breadcrumbs a:hover {
+	color: var(--fg);
+}
+
+/* ---- hero ---- */
+.flow-detail__hero {
+	margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.flow-detail__hero-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.flow-detail__hero h1 {
+	font-size: clamp(30px, 4.4vw, 52px);
+	line-height: 1.04;
+	letter-spacing: -0.03em;
+	font-weight: 700;
+	margin: 0 0 18px;
+}
+
+.flow-detail__tagline {
+	font-size: clamp(15px, 1.3vw, 17px);
+	color: var(--fg-3);
+	line-height: 1.6;
+	margin: 0;
+}
+
+/* time pill — matches .flow-card__tag scale */
+.flow-detail__time {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--accent);
+	padding: 3px 10px;
+	border: 1px solid rgba(216, 255, 74, 0.25);
+	border-radius: var(--r-pill);
+	background: var(--accent-soft);
+}
+
+/* ---- content sections: hairline rhythm + one heading scale ---- */
+.flow-detail__section {
+	margin: 0;
+	padding: clamp(36px, 5vw, 56px) 0 0;
+	border-top: 1px solid var(--line);
+}
+
+.flow-detail__section:first-of-type {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.flow-detail__section h2,
+.flow-detail__related h2 {
+	font-size: clamp(22px, 2.4vw, 28px);
+	font-weight: 600;
+	letter-spacing: -0.018em;
+	margin: 0 0 18px;
+}
+
+.flow-detail__section>p {
+	color: var(--fg-3);
+	font-size: 15px;
+	line-height: 1.65;
+	margin: 0;
+	max-width: 680px;
+}
+
+/* ---- steps: reuse the landing .step pattern (pill number + card) ---- */
+.flow-detail__steps {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.flow-detail__step {
+	border: 1px solid var(--line);
+	border-radius: var(--r-lg);
+	padding: 24px 26px;
+	background: linear-gradient(180deg,
+			rgba(255, 255, 255, 0.025),
+			rgba(255, 255, 255, 0.003));
+	transition:
+		border-color 0.3s var(--ease),
+		transform 0.4s var(--ease-out);
+}
+
+.flow-detail__step:hover {
+	border-color: var(--line-strong);
+	transform: translateY(-2px);
+}
+
+.flow-detail__step-num {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	color: var(--accent);
+	letter-spacing: 0.06em;
+	display: inline-block;
+	margin-bottom: 14px;
+	padding: 4px 10px;
+	border: 1px solid rgba(216, 255, 74, 0.25);
+	border-radius: var(--r-pill);
+	background: var(--accent-soft);
+}
+
+.flow-detail__step h3 {
+	margin: 0 0 8px;
+	font-size: 20px;
+	font-weight: 600;
+	letter-spacing: -0.015em;
+}
+
+.flow-detail__step p {
+	margin: 0;
+	color: var(--fg-3);
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+/* ---- integrations ---- */
+.flow-detail__integrations {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin: 0;
+}
+
+.flow-detail__integration {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 9px 14px;
+	border: 1px solid var(--line);
+	border-radius: var(--r-pill);
+	background: rgba(255, 255, 255, 0.02);
+	font-size: 14px;
+	color: var(--fg-2);
+}
+
+.flow-detail__integration img {
+	width: 20px;
+	height: 20px;
+}
+
+/* ---- what you get ---- */
+.flow-detail__list {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.flow-detail__list li {
+	font-size: 15px;
+	color: var(--fg-2);
+	padding-left: 26px;
+	position: relative;
+	line-height: 1.55;
+}
+
+.flow-detail__list li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 7px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: var(--accent);
+	box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+/* ---- tier callout ---- */
+.flow-detail__tier {
+	margin: clamp(36px, 5vw, 56px) 0 0;
+	padding: clamp(24px, 4vw, 32px);
+	border: 1px solid var(--line-2);
+	border-radius: var(--r-lg);
+	background: linear-gradient(180deg,
+			rgba(255, 255, 255, 0.025),
+			rgba(255, 255, 255, 0.003));
+}
+
+.flow-detail__tier-label {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: var(--accent);
+	display: inline-block;
+	margin-bottom: 12px;
+	padding: 4px 10px;
+	border: 1px solid rgba(216, 255, 74, 0.25);
+	border-radius: var(--r-pill);
+	background: var(--accent-soft);
+}
+
+.flow-detail__tier p {
+	margin: 0 0 18px;
+	color: var(--fg-2);
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.flow-detail__tier p strong {
+	color: var(--fg);
+	font-weight: 700;
+}
+
+/* ---- main CTA ---- */
+.flow-detail__cta-wrap {
+	margin: clamp(40px, 6vw, 64px) 0;
+}
+
+/* ---- related ---- */
+.flow-detail__related {
+	max-width: 960px;
+	padding-top: clamp(36px, 5vw, 56px);
+	border-top: 1px solid var(--line);
+}
+
+.flow-detail__related-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 14px;
+	margin-top: 4px;
+}
+
+.flow-detail__related-card {
+	display: block;
+	border: 1px solid var(--line);
+	border-radius: var(--r-md);
+	padding: 22px 22px 24px;
+	text-decoration: none;
+	background: linear-gradient(180deg,
+			rgba(255, 255, 255, 0.02),
+			transparent);
+	transition:
+		border-color 0.25s var(--ease),
+		transform 0.3s var(--ease-out);
+}
+
+.flow-detail__related-card:hover {
+	border-color: var(--line-strong);
+	transform: translateY(-2px);
+}
+
+.flow-detail__related-card span {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--accent);
+}
+
+.flow-detail__related-card h3 {
+	margin: 10px 0 6px;
+	font-size: 17px;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	color: var(--fg);
+}
+
+.flow-detail__related-card p {
+	margin: 0;
+	font-size: 14px;
+	color: var(--fg-3);
+	line-height: 1.55;
+}
+
+@media (max-width: 1024px) {
+
+	.flows-grid,
+	.flow-detail__related-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 768px) {
+	.flows-toolbar {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.flows-view {
+		align-self: flex-start;
+	}
+
+	.flows-grid,
+	.flow-detail__related-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.flows-grid--list .flow-card__link {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.flows-grid--list .flow-card__integrations {
+		margin-left: 0;
+	}
+}
